@@ -31,6 +31,7 @@ jobs:
           key: ${{ runner.os }}-branch-build-${{ hashFiles('**/package.json') }}
       - run: cp .env.local.default .env.local
       - run: npm install --production=false --loglevel notice --legacy-peer-deps
+      - run: cd packages/client && npm run build
       - name: Deploy to Vercel Action
         uses: BetaHuhn/deploy-to-vercel-action@v1
         with:
